@@ -1,0 +1,12 @@
+# ASH (Automated Security Helper) Configuration
+# Excludes Python virtual environment from security scans
+
+global_settings:
+  fail_on_findings: true
+  severity_threshold: MEDIUM
+
+scanners:
+  detect-secrets:
+    exclude_paths:
+      - ".venv/**"
+      - "**/.venv/**"

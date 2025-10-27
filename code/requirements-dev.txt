@@ -1,0 +1,10 @@
+# Development dependencies for code quality and security scanning
+# Install with: pip install -r requirements-dev.txt
+
+# Security scanning
+git+https://github.com/awslabs/automated-security-helper.git@v3.1.2
+
+# Code linters and formatters (add as needed)
+# black>=24.0.0
+# flake8>=7.0.0
+# pylint>=3.0.0

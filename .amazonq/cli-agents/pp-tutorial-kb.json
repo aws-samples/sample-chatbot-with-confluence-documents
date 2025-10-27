@@ -1,0 +1,49 @@
+{
+  "$schema": "https://raw.githubusercontent.com/aws/amazon-q-developer-cli/refs/heads/main/schemas/agent-v1.json",
+  "name": "tutorial-kb",
+  "description": "",
+  "prompt": null,
+  "mcpServers": {
+    "awslabs.aws-documentation-mcp-server" : {
+      "command" : "uvx",
+      "args" : [ "awslabs.aws-documentation-mcp-server@latest" ],
+      "env" : {
+        "FASTMCP_LOG_LEVEL" : "ERROR"
+      },
+      "disabled" : false,
+      "autoApprove" : [ ]
+    },
+    "awslabs.core-mcp-server" : {
+      "command" : "uvx",
+      "args" : [ "awslabs.core-mcp-server@latest" ],
+      "env" : {
+        "FASTMCP_LOG_LEVEL" : "ERROR"
+      },
+      "disabled" : false,
+      "autoApprove" : [ ]
+    }
+  },
+  "tools": [
+    "*"
+  ],
+  "toolAliases": {},
+  "allowedTools": [],
+  "resources": [
+    "file://dev/summary.md",
+    "file://AmazonQ.md",
+    "file://AGENTS.md",
+    "file://README.md"
+  ],
+  "hooks": {
+    "userPromptSubmit": [
+      {
+        "command": "cat ./dev/reminder.txt",
+        "timeout_ms": 5000,
+        "cache_ttl_seconds": 5
+      }
+    ]
+  },
+  "toolsSettings": {},
+  "useLegacyMcpJson": true,
+  "model": null
+}

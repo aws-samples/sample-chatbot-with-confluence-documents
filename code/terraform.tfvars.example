@@ -1,0 +1,27 @@
+# Copy this file to terraform.tfvars and customize the values
+
+project_name = "confluence-bedrock"
+environment  = "dev"
+aws_region   = "us-west-2"
+
+# Confluence configuration
+confluence_base_url = "https://your-company.atlassian.net"
+confluence_email    = "your-email@company.com"
+
+# Bedrock configuration
+knowledge_base_id    = "YOUR_KNOWLEDGE_BASE_ID"
+data_source_id      = "YOUR_DATA_SOURCE_ID"
+knowledge_base_top_n = 3
+llm_model_id        = "us.anthropic.claude-3-7-sonnet-20250219-v1:0"
+
+# Lambda configuration
+ingestion_lambda_timeout     = 900
+ingestion_lambda_memory_size = 512
+chatbot_lambda_timeout       = 30
+chatbot_lambda_memory_size   = 256
+
+# Confluence spaces to sync
+confluence_spaces = [
+  { key = "SPACE1" },
+  { key = "SPACE2" }
+]
