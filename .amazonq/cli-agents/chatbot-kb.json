@@ -1,6 +1,6 @@
 {
   "$schema": "https://raw.githubusercontent.com/aws/amazon-q-developer-cli/refs/heads/main/schemas/agent-v1.json",
-  "name": "tutorial-kb",
+  "name": "chatbot-kb",
   "description": "",
   "prompt": null,
   "mcpServers": {
