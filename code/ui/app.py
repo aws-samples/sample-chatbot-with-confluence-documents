@@ -5,7 +5,7 @@ from agentcore_client import AgentCoreClient
 
 # Page config
 st.set_page_config(
-    page_title="Tutorial Chatbot",
+    page_title="Knowledge Base Chatbot",
     page_icon="🤖",
     layout="wide"
 )
@@ -65,7 +65,7 @@ col1, col2 = st.columns([1, 1])
 # Main content in left column
 with col1:
     st.title("Hello")
-    st.write("Welcome to the Tutorial Chatbot! Use the chat panel on the right to ask questions.")
+    st.write("Welcome to the Knowledge Base Chatbot! Use the chat panel on the right to ask questions.")
 
 # Chat panel in right column
 with col2:
@@ -74,7 +74,7 @@ with col2:
     
     # Create chat container using Streamlit's native styling
     with st.container(border=True):
-        st.markdown("**💬 Tutorial Assistant**")
+        st.markdown("**💬 Assistant**")
         
         # Chat messages area with fixed height
         with st.container(height=400):
