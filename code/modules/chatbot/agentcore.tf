@@ -151,7 +151,8 @@ resource "aws_iam_role_policy" "agentcore_execution" {
         Effect = "Allow"
         # nosemgrep: terraform.lang.security.iam.no-iam-data-exfiltration
         Action = [
-          "s3:GetObject"
+          "s3:GetObject",
+          "s3:GetObjectVersion"
         ]
         Resource = "arn:aws:s3:::${var.s3_bucket_name}/*"
       },

@@ -162,6 +162,6 @@ aws ssm put-parameter \
 echo "✅ Configuration updated successfully!"
 echo
 echo "📋 Next steps:"
-echo "1. Upload your Confluence API token: ./scripts/upload-token.sh"
-echo "2. Enable the ingestion pipeline: ./scripts/toggle-pipeline.sh enable"
+echo "1. Upload your Confluence API token: ./code/scripts/upload-token.sh"
+echo "2. Enable the ingestion pipeline: /code/scripts/toggle-pipeline.sh enable"
 echo "3. Test the ingestion: aws lambda invoke --function-name \$(terraform output -raw ingestion_lambda_function_name) --region $AWS_REGION --payload '{}' /tmp/test.json && cat /tmp/test.json"

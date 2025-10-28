@@ -44,4 +44,4 @@ echo "🔄 Destroying all infrastructure..."
 terraform destroy -auto-approve
 
 echo "✅ All infrastructure destroyed successfully!"
-echo "💡 Run './scripts/deploy-all.sh' to recreate the infrastructure."
+echo "💡 Run './code/scripts/deploy-all.sh' to recreate the infrastructure."

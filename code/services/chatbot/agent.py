@@ -22,8 +22,6 @@ app = BedrockAgentCoreApp()
 config = {}
 ssm_client = boto3.client('ssm')
 bedrock_agent_runtime = boto3.client('bedrock-agent-runtime')
-# Configure S3 client with Signature Version 4 for KMS-encrypted objects
-s3_client = boto3.client('s3', config=Config(signature_version='s3v4'))
 memory_client = None
 # Default fallback - will be overridden by config
 knowledge_base_top_N = 3
@@ -218,6 +216,15 @@ def markdown_to_html(markdown_text: str) -> str:
     
     # Images with S3 presigned URLs
     def replace_image_ref(match):
+        # Configure S3 client with Signature Version 4 and regional endpoint for KMS-encrypted objects
+        s3_client = boto3.client(
+            's3',
+            region_name=config.get("aws_region"),
+            config=Config(
+                signature_version='s3v4',
+                s3={'addressing_style': 'virtual'}
+            )
+        )
         s3_path = match.group(1)
         try:
             if s3_path.startswith('s3://'):

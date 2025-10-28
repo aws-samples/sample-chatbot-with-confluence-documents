@@ -80,7 +80,7 @@ if [[ $? -eq 0 ]]; then
     echo "📋 Next steps:"
     echo "   • The next ingestion run will process all pages in all configured spaces"
     echo "   • You can trigger ingestion manually or wait for the scheduled run"
-    echo "   • Use './scripts/toggle-pipeline.sh status' to check the pipeline status"
+    echo "   • Use './code/scripts/toggle-pipeline.sh status' to check the pipeline status"
 else
     echo "❌ Failed to reset crawl state"
     exit 1

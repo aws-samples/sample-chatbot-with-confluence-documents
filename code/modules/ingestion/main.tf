@@ -157,14 +157,28 @@ resource "aws_ssm_parameter" "crawl_state" {
   description = "Crawl state tracking for Confluence spaces"
 }
 
+# Random suffix for signing profile to avoid name conflicts
+# AWS Signer profiles cannot be deleted, only canceled, so we need unique names
+resource "random_id" "signing_profile" {
+  byte_length = 4
+
+  keepers = {
+    profile_base = "${var.project_name}-${var.environment}"
+  }
+}
+
 # Code signing profile for Lambda
 resource "aws_signer_signing_profile" "ingestion_lambda" {
   platform_id = "AWSLambda-SHA384-ECDSA"
-  name        = "${replace(var.project_name, "-", "")}${var.environment}ingestionlambda"
+  name        = "${replace(var.project_name, "-", "")}${var.environment}ingestionlambda${random_id.signing_profile.hex}"
 
   signature_validity_period {
     value = 5
     type  = "YEARS"
+  }
+
+  lifecycle {
+    create_before_destroy = true
   }
 }
 
